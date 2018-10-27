@@ -1,0 +1,25 @@
+server:
+  environment: local
+  name: gateway
+  directory: C:/Work/development/snapscript/snap-archive/snap-server/orthrus-gateway
+  port: 7979
+  packages: io.orthrus.gateway   
+      
+gateway:   
+  resources: ${server.directory} 
+  creds: ${gateway.resources}/certificate  
+  plan: ${server.directory}/src/main/resources/plan.json   
+
+jmx:
+   login: admin
+   password: password12
+   port: 9989
+   
+zookeeper:   
+   enabled: false
+   hosts: localhost:2181     
+
+logging:
+  level:
+    root: INFO        
+

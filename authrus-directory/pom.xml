@@ -1,0 +1,348 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>authrus-directory</artifactId>
+  <packaging>jar</packaging>
+  <parent>
+    <artifactId>authrus-parent</artifactId>
+    <groupId>com.authrus</groupId>
+    <version>sandbox-SNAPSHOT</version>
+  </parent>
+
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    <common.version>sandbox-SNAPSHOT</common.version>
+    <server.version>sandbox-SNAPSHOT</server.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.authrus</groupId>
+      <artifactId>authrus-service</artifactId>
+      <version>sandbox-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.authrus</groupId>
+      <artifactId>authrus-store</artifactId>
+      <version>sandbox-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.authrus</groupId>
+      <artifactId>authrus-domain</artifactId>
+      <version>sandbox-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>com.authrus.directory.DirectoryApplication</mainClass>
+          <finalName>directory</finalName>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
+  <profiles>
+    <profile>
+      <id>local</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>local</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <copy file="src/main/assembly/assembly.xml" tofile="${project.build.directory}/assembly/assembly-local.xml">
+                      <filterset>
+                        <filter token="env.name" value="local" />
+                        <filter token="archive.suffix" value="local" />
+                      </filterset>
+                    </copy>
+                  </tasks>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <finalName>directory-${project.version}</finalName>
+            </configuration>
+            <executions>
+              <execution>
+                <id>local</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <filters>
+                    <filter>${project.basedir}/src/main/assembly/filter-local.properties</filter>
+                  </filters>
+                  <descriptors>
+                    <descriptor>${project.build.directory}/assembly/assembly-local.xml</descriptor>
+                  </descriptors>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>prod-primary</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>prod-primary</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <copy file="src/main/assembly/assembly.xml" tofile="${project.build.directory}/assembly/assembly-prod-primary.xml">
+                      <filterset>
+                        <filter token="env.name" value="prod" />
+                        <filter token="archive.suffix" value="prod-primary" />
+                      </filterset>
+                    </copy>
+                  </tasks>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <finalName>directory-${project.version}</finalName>
+            </configuration>
+            <executions>
+              <execution>
+                <id>prod-primary</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <filters>
+                    <filter>${project.basedir}/src/main/assembly/filter-prod-primary.properties</filter>
+                  </filters>
+                  <descriptors>
+                    <descriptor>${project.build.directory}/assembly/assembly-prod-primary.xml</descriptor>
+                  </descriptors>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>prod-secondary</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>prod-secondary</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <copy file="src/main/assembly/assembly.xml" tofile="${project.build.directory}/assembly/assembly-prod-secondary.xml">
+                      <filterset>
+                        <filter token="env.name" value="prod" />
+                        <filter token="archive.suffix" value="prod-secondary" />
+                      </filterset>
+                    </copy>
+                  </tasks>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <finalName>directory-${project.version}</finalName>
+            </configuration>
+            <executions>
+              <execution>
+                <id>prod-secondary</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+                <configuration>
+                  <filters>
+                    <filter>${project.basedir}/src/main/assembly/filter-prod-secondary.properties</filter>
+                  </filters>
+                  <descriptors>
+                    <descriptor>${project.build.directory}/assembly/assembly-prod-secondary.xml</descriptor>
+                  </descriptors>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>remote-deploy-prod-primary</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>perform-release-prod-primary</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <exec executable="C:\Program Files\Ant\1.9.3\bin\ant.bat">
+                      <env key="ANT_HOME" value="C:\Program Files\Ant\1.9.3" />
+                      <arg value="-f" />
+                      <arg value="C:\Work\development\bitbucket\install\install\install-sshkey.xml" />
+                      <arg value="-Dfilter.file=${project.basedir}/src/main/assembly/filter-prod-primary.properties" />
+                      <arg value="-Duser.name=ubuntu" />
+                      <arg value="-Dssh.key=C:/Work/development/bitbucket/install/key/aws/prodapp1/prodapp1.pem" />
+                      <arg value="-Dservice.name=directory" />
+                      <arg value="-Dscript.location=C:/Work/development/bitbucket/install" />
+                      <arg value="-Darchive.location=c:/Users/Niall/.m2/repository/io/authrus/authrus-directory" />
+                      <arg value="-Darchive.name=authrus-directory" />
+                      <arg value="-Darchive.suffix=prod-primary" />
+                      <arg value="-Dproject.version=${project.version}" />
+                      <arg value="-Ddeploy.directory=/apps/directory" />
+                      <arg value="-Ddeploy.user=root" />
+                      <arg value="-Ddeploy.host=prodapp1" />
+                      <arg value="-Ddeploy.type=complete" />
+                      <arg value="-Drelease.type=release" />
+                    </exec>
+                  </tasks>
+                </configuration>
+              </execution>
+            </executions>
+            <dependencies>
+              <dependency>
+                <groupId>ant</groupId>
+                <artifactId>ant-jsch</artifactId>
+                <version>1.6.5</version>
+              </dependency>
+              <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>0.1.54</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>remote-deploy-prod-secondary</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>perform-release-prod-secondary</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <exec executable="C:\Program Files\Ant\1.9.3\bin\ant.bat">
+                      <env key="ANT_HOME" value="C:\Program Files\Ant\1.9.3" />
+                      <arg value="-f" />
+                      <arg value="C:\Work\development\bitbucket\install\install\install-sshkey.xml" />
+                      <arg value="-Dfilter.file=${project.basedir}/src/main/assembly/filter-prod-secondary.properties" />
+                      <arg value="-Duser.name=ubuntu" />
+                      <arg value="-Dssh.key=C:/Work/development/bitbucket/install/key/aws/prodapp2/prodapp2.pem" />
+                      <arg value="-Dservice.name=directory" />
+                      <arg value="-Dscript.location=C:/Work/development/bitbucket/install" />
+                      <arg value="-Darchive.location=c:/Users/Niall/.m2/repository/io/authrus/authrus-directory" />
+                      <arg value="-Darchive.name=authrus-directory" />
+                      <arg value="-Darchive.suffix=prod-secondary" />
+                      <arg value="-Dproject.version=${project.version}" />
+                      <arg value="-Ddeploy.directory=/apps/directory" />
+                      <arg value="-Ddeploy.user=root" />
+                      <arg value="-Ddeploy.host=prodapp2" />
+                      <arg value="-Ddeploy.type=complete" />
+                      <arg value="-Drelease.type=release" />
+                    </exec>
+                  </tasks>
+                </configuration>
+              </execution>
+            </executions>
+            <dependencies>
+              <dependency>
+                <groupId>ant</groupId>
+                <artifactId>ant-jsch</artifactId>
+                <version>1.6.5</version>
+              </dependency>
+              <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>0.1.54</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

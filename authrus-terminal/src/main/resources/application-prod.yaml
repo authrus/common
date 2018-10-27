@@ -1,0 +1,11 @@
+server:
+  environment: prod
+  directory: /apps/terminal/current
+
+terminal:
+   host: @terminal.host@   
+   
+zookeeper:   
+   hosts: prodapp1:${zookeeper.clientPort},prodapp2:${zookeeper.clientPort}
+   server.1: prodapp1:${zookeeper.clientPort}:3888   
+   server.2: prodapp2:${zookeeper.clientPort}:3888  

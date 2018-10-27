@@ -1,0 +1,9 @@
+server:
+  environment: prod
+  directory: /apps/directory/current
+
+tuple:
+   remote: @tuple.remote@
+   
+zookeeper:   
+   hosts: prodapp1:2181,prodapp2:2181     

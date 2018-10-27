@@ -1,0 +1,18 @@
+server:
+  environment: prod
+  directory: /apps/sso/current
+      
+login:
+   url:
+      directory: http://prodapp1:8383/ 
+   token-store:
+      path: /var/creds/www.orthrus.io.pfx 
+ 
+mail:
+   credentials: /var/creds/smtp.properties 
+    
+zookeeper:   
+   hosts: prodapp1:2181,prodapp2:2181      
+      
+tuple:
+   remote: @tuple.remote@        

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <property file="build.properties" />
+  <echo message="${build.version}" />
+  <echo message="${maven.home}" />
+  <echo message="${java.home}" />
+  <echo message="${ant.home}" />
+  <exec executable="${maven.home}\bin\mvn.cmd">
+    <arg value="clean" />
+    <arg value="install" />
+    <arg value="-DskipTests" />
+  </exec>
+  <delete dir="build"/>
+  <mkdir dir="build/${build.version}/lib" />
+  <mkdir dir="build/${build.version}/etc" />
+  <mkdir dir="build/${build.version}/error" />
+  <mkdir dir="build/${build.version}/certificate/www.authrus.io" />
+  <mkdir dir="build/${build.version}/bin" />
+  <mkdir dir="build/${build.version}/log" />
+  <mkdir dir="build/${build.version}/lock" />
+  <copy todir="build/${build.version}/error">
+    <fileset dir="error" />
+  </copy>
+  <copy todir="build/${build.version}/bin">
+    <fileset dir="bin" />
+  </copy>
+    <copy todir="build/${build.version}/etc">
+    <fileset dir="etc" />
+  </copy>
+  <copy file="target/gateway.jar" tofile="build/${build.version}/lib/gateway.jar" overwrite="true" />
+  <!-- copy file="certificate/www.authrus.io/www.authrus.io.pfx" tofile="build/${build.version}/certificate/www.authrus.io/www.authrus.io.pfx" overwrite="true" /-->
+  <tar destfile="gateway.tar" basedir="build" />
+  <gzip destfile="gateway.tar.gz" src="gateway.tar" />
+  <delete file="gateway.tar"/>
+</project>

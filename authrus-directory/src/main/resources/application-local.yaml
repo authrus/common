@@ -1,0 +1,8 @@
+server:
+  port: 8385
+  
+tuple:
+   remote: localhost  
+   
+jmx:
+   port: 5779   
