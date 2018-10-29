@@ -20,9 +20,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.zuooh.http.proxy</groupId>
-      <artifactId>zuooh-standard-proxy-plan</artifactId>
-      <version>1.1-SNAPSHOT</version>
+      <groupId>com.authrus</groupId>
+      <artifactId>authrus-gateway-deploy</artifactId>
+      <version>sandbox-SNAPSHOT</version>
       <exclusions>
         <exclusion>
           <groupId>org.slf4j</groupId>

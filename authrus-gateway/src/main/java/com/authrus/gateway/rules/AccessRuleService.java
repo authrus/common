@@ -8,9 +8,9 @@ import lombok.SneakyThrows;
 
 import org.springframework.stereotype.Component;
 
+import com.authrus.gateway.deploy.FirewallRule;
+import com.authrus.gateway.deploy.Plan;
 import com.google.common.collect.Lists;
-import com.zuooh.http.proxy.plan.FirewallRule;
-import com.zuooh.http.proxy.plan.Plan;
 
 @Component
 @AllArgsConstructor

@@ -10,8 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.PropertyResolver;
 
-import com.zuooh.http.proxy.plan.Plan;
-import com.zuooh.http.proxy.plan.deploy.Deployment;
+import com.authrus.gateway.deploy.Deployment;
+import com.authrus.gateway.deploy.Plan;
 
 @Configuration
 @ComponentScan(basePackageClasses = ProxyPlanConfiguration.class)

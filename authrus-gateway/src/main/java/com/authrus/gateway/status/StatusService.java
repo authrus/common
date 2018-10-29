@@ -9,13 +9,13 @@ import lombok.SneakyThrows;
 
 import org.springframework.stereotype.Component;
 
+import com.authrus.gateway.deploy.EndPoint;
+import com.authrus.gateway.deploy.Plan;
 import com.google.common.collect.Lists;
 import com.zuooh.http.proxy.balancer.connect.ConnectionPoolConnector;
 import com.zuooh.http.proxy.balancer.status.StatusMonitor;
 import com.zuooh.http.proxy.balancer.status.StatusReport;
 import com.zuooh.http.proxy.core.State;
-import com.zuooh.http.proxy.plan.EndPoint;
-import com.zuooh.http.proxy.plan.Plan;
 
 @Component
 @AllArgsConstructor

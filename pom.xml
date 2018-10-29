@@ -51,6 +51,7 @@
     <module>authrus-domain</module>
     <module>authrus-sso</module>
     <module>authrus-gateway</module>
+    <module>authrus-gateway-deploy</module>
   </modules>
 
 </project>
