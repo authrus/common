@@ -1,4 +1,4 @@
-package com.authrus.gateway.deploy.build;
+package com.authrus.gateway.deploy.parse;
 
 import java.io.LineNumberReader;
 import java.io.Reader;

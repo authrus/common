@@ -10,8 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.PropertyResolver;
 
+import com.authrus.gateway.deploy.DeploymentEngine;
 import com.authrus.gateway.deploy.Deployment;
-import com.authrus.gateway.deploy.Plan;
 
 @Configuration
 @ComponentScan(basePackageClasses = ProxyPlanConfiguration.class)
@@ -19,7 +19,7 @@ public class ProxyPlanConfiguration {
 
    private final ProxyTraceLogger logger;
    private final ProxyPlanReader reader;
-   private final Deployment deployment;
+   private final DeploymentEngine deployment;
    private final String path;
    
    @SneakyThrows
@@ -29,14 +29,14 @@ public class ProxyPlanConfiguration {
          @Value("${gateway.debug:false}") boolean debug) 
    {
       this.logger = new ProxyTraceLogger(debug);
-      this.deployment = new Deployment(logger);
+      this.deployment = new DeploymentEngine(logger);
       this.reader = new ProxyPlanReader(resolver);
       this.path = path;
    }
    
    @Bean
    @SneakyThrows
-   public Plan proxyPlan() {
+   public Deployment proxyPlan() {
       Reader plan = reader.readPlan(path);
       return deployment.deploy(plan);
    }

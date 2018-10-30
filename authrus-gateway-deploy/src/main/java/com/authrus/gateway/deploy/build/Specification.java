@@ -17,9 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.simpleframework.http.Status;
 import org.simpleframework.transport.trace.TraceAnalyzer;
 
-import com.authrus.gateway.deploy.Context;
-import com.authrus.gateway.deploy.Destination;
-import com.authrus.gateway.deploy.ProxyServer;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zuooh.common.ssl.Certificate;
@@ -37,7 +34,7 @@ public class Specification {
    
    @JsonCreator
    public Specification(
-         @JsonProperty("attributes") Map<String, String> properties,
+         @JsonProperty("properties") Map<String, String> properties,
          @JsonProperty("hosts") List<HostLayout> hosts)         
    {
       this.properties = properties;

@@ -1,0 +1,70 @@
+{
+  "client": {
+  },
+  "proxy": {
+    "proxy-connection": {
+        "create": [
+          "CREATE"
+        ],
+        "update": [
+          "CREATE",
+          "INITIATE_CONNECT",
+          "CONNECTION_WAIT",
+          "CONNECTED",
+          "REMOTE_CONNECTION_CLOSE",
+          "DISPOSE",
+          "ERROR",
+          "CLOSE"
+        ],
+        "commit": [
+          "CLOSE"
+        ]
+    },
+    "proxy-request": {
+        "create": [
+          "FORWARD_START"
+        ],
+        "update": [
+          "CREATE",
+          "INITIATE_CONNECT",
+          "CONNECTION_WAIT",
+          "CONNECTED",
+          "FORWARD_START",
+          "FORWARD_REQUEST",
+          "FORWARD_HEADER_FINISHED",
+          "FORWARD_BODY_FINISHED",
+          "FORWARD_FLUSH_FINISHED",
+          "READ",
+          "READ_HEADER",
+          "READ_100_CONTINUE",
+          "READ_HEADER_FINISHED",
+          "READ_BODY",
+          "READ_BODY_FINISHED",
+          "READ_WAIT",
+          "WRITE",
+          "WRITE_WAIT",
+          "WRITE_BLOCKING",
+          "WRITE_HEADER",
+          "WRITE_HEADER_FINISHED",
+          "WRITE_BODY",
+          "WRITE_BODY_FINISHED",
+          "TRANSACTION_COMPLETE",
+          "UNEXPECTED_DATA",
+          "REMOTE_CONNECTION_CLOSE",
+          "KEEP_ALIVE_TIMEOUT",
+          "RECYCLE",
+          "HEALTH_CHECK",
+          "STALE",
+          "CANCEL",
+          "DISPOSE",
+          "ERROR"
+        ],
+        "commit": [
+          "DISPOSE",
+          "RECYCLE",
+          "STALE",
+          "CLOSE"
+        ]
+    }
+  }
+}

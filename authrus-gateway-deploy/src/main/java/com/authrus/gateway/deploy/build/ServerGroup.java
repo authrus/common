@@ -7,7 +7,6 @@ import java.util.Map;
 import lombok.Data;
 import lombok.ToString;
 
-import com.authrus.gateway.deploy.Context;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zuooh.http.proxy.balancer.LoadBalancer;

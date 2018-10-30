@@ -18,6 +18,11 @@
   </properties>
 
   <dependencies>
+      <dependency>
+      <groupId>com.authrus</groupId>
+      <artifactId>authrus-common</artifactId>
+      <version>sandbox-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>com.zuooh.http.proxy</groupId>
       <artifactId>zuooh-standard-proxy</artifactId>

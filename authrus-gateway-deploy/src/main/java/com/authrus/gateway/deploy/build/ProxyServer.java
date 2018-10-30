@@ -1,4 +1,4 @@
-package com.authrus.gateway.deploy;
+package com.authrus.gateway.deploy.build;
 
 import java.io.IOException;
 import java.net.SocketAddress;

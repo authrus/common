@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown=true)
-class PropertySet {
+public class PropertySet {
    
    private final Map<String, String> properties;
    

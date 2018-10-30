@@ -35,7 +35,6 @@ import org.simpleframework.http.Scheme;
 import org.simpleframework.http.Status;
 import org.simpleframework.transport.reactor.Reactor;
 
-import com.authrus.gateway.deploy.Context;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zuooh.common.ssl.Certificate;

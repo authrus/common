@@ -8,15 +8,15 @@ import lombok.SneakyThrows;
 
 import org.springframework.stereotype.Component;
 
-import com.authrus.gateway.deploy.FirewallRule;
-import com.authrus.gateway.deploy.Plan;
+import com.authrus.gateway.deploy.Deployment;
+import com.authrus.gateway.deploy.build.FirewallRule;
 import com.google.common.collect.Lists;
 
 @Component
 @AllArgsConstructor
 public class AccessRuleService {
 
-   private final Plan plan;
+   private final Deployment plan;
 
    @SneakyThrows
    public List<AccessRule> rules() {

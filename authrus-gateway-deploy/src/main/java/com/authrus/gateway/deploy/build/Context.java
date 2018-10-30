@@ -1,4 +1,4 @@
-package com.authrus.gateway.deploy;
+package com.authrus.gateway.deploy.build;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,6 +12,7 @@ import org.simpleframework.common.thread.ConcurrentExecutor;
 import org.simpleframework.transport.reactor.ExecutorReactor;
 import org.simpleframework.transport.reactor.Reactor;
 
+import com.authrus.gateway.deploy.Deployment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zuooh.http.proxy.analyser.SampleRecorder;
 import com.zuooh.http.proxy.balancer.identity.CookieExtractor;
@@ -53,7 +54,7 @@ public class Context {
       this.recorder = recorder;
    }
    
-   public Plan compile() {      
-      return new Plan(rules, monitors, addresses);
+   public Deployment getPlan() {      
+      return new Deployment(rules, monitors, addresses);
    }
 }

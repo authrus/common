@@ -1,7 +1,7 @@
 server:
   environment: local
   name: gateway
-  directory: C:/Work/development/snapscript/snap-archive/snap-server/orthrus-gateway
+  directory: C:/Work/development/authrus/gateway/authrus-gateway
   port: 7979
   packages: io.orthrus.gateway   
       

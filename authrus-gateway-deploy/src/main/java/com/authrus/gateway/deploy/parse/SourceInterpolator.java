@@ -1,11 +1,12 @@
-package com.authrus.gateway.deploy.build;
+package com.authrus.gateway.deploy.parse;
 
 import java.util.Map;
 import java.util.Set;
 
 import lombok.SneakyThrows;
 
-import com.authrus.gateway.deploy.Context;
+import com.authrus.gateway.deploy.build.Context;
+import com.authrus.gateway.deploy.build.PropertySet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SourceInterpolator {

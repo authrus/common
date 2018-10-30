@@ -9,8 +9,8 @@ import lombok.SneakyThrows;
 
 import org.springframework.stereotype.Component;
 
-import com.authrus.gateway.deploy.EndPoint;
-import com.authrus.gateway.deploy.Plan;
+import com.authrus.gateway.deploy.Deployment;
+import com.authrus.gateway.deploy.build.EndPoint;
 import com.google.common.collect.Lists;
 import com.zuooh.http.proxy.balancer.connect.ConnectionPoolConnector;
 import com.zuooh.http.proxy.balancer.status.StatusMonitor;
@@ -21,7 +21,7 @@ import com.zuooh.http.proxy.core.State;
 @AllArgsConstructor
 public class StatusService {
 
-   private final Plan plan;
+   private final Deployment plan;
 
    @SneakyThrows
    public List<StatusResult> status(Predicate<State> filter) {
