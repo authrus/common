@@ -1,9 +1,10 @@
 package com.authrus.common.collections;
 
-import com.authrus.common.collections.LeastRecentlyUsedMap.RemovalListener;
-
 import java.util.Map;
 import java.util.Set;
+
+import com.authrus.common.collections.LeastRecentlyUsedMap;
+import com.authrus.common.collections.LeastRecentlyUsedMap.RemovalListener;
 
 public class LeastRecentlyUsedCache<K, V> implements Cache<K, V> {
 
@@ -63,10 +64,5 @@ public class LeastRecentlyUsedCache<K, V> implements Cache<K, V> {
    @Override
    public synchronized boolean isEmpty() {
       return cache.isEmpty();
-   }
-   
-   @Override
-   public synchronized String toString() {
-      return String.valueOf(cache);
    }
 }

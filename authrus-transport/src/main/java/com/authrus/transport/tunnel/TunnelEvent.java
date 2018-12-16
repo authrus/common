@@ -1,0 +1,19 @@
+package com.authrus.transport.tunnel;
+
+public enum TunnelEvent {
+   CONNECT,
+   CONNECTION_WAIT,
+   READ,
+   READ_WAIT,
+   WRITE,
+   WRITE_WAIT,
+   FORWARD_START,
+   FORWARD_DONE,
+   REMOTE_CONNECTION_CLOSE,
+   REMOTE_DISCONNECT,
+   REMOTE_TIMEOUT,
+   RESPONSE_DONE,
+   CLOSE,
+   CANCEL,
+   ERROR
+}

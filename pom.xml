@@ -1,58 +1,53 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.authrus</groupId>
-  <artifactId>authrus-parent</artifactId>
-  <version>sandbox-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.authrus.common</groupId>
+	<artifactId>authrus-common-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.5.RELEASE</version>
-  </parent>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+	</properties>
 
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-  </properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.1</version>
+					<configuration>
+						<encoding>ISO-8859-1</encoding>
+						<compilerVersion>1.6</compilerVersion>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
-
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webflux</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-    </dependency>
-  </dependencies>
-
-  <modules>
-    <module>authrus-common</module>
-    <module>authrus-store</module>
-    <module>authrus-service</module>
-    <module>authrus-directory</module>
-    <module>authrus-terminal</module>
-    <module>authrus-domain</module>
-    <module>authrus-sso</module>
-    <module>authrus-gateway</module>
-    <module>authrus-gateway-deploy</module>
-  </modules>
+   <modules>
+      <module>authrus-attribute</module>    
+      <module>authrus-predicate</module>              
+      <module>authrus-common</module>
+      <module>authrus-log</module>      
+      <module>authrus-slf4j</module>            
+      <module>authrus-io</module>      
+      <module>authrus-message</module> 
+      <module>authrus-message-serialize</module>        
+      <module>authrus-message-invoke</module>        
+      <module>authrus-transport</module>
+      <module>authrus-tuple</module>
+      <module>authrus-system</module>       
+      <module>authrus-chart</module>         
+      <module>authrus-swing</module>    
+      <module>authrus-spring</module>    
+      <module>authrus-socket</module>      
+      <module>authrus-socket-spring</module>       
+      <module>authrus-tuple-spring</module>        
+		<module>authrus-tuple-test</module>           
+	</modules>
 
 </project>
 
