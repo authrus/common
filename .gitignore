@@ -1,0 +1,9 @@
+.settings
+.idea
+*.prefs
+*.pfx
+*.crt
+*.pem
+*.csr
+*.jks
+*.key
