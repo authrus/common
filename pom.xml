@@ -28,25 +28,17 @@
 	</build>
 
    <modules>
-      <module>authrus-attribute</module>    
       <module>authrus-predicate</module>              
       <module>authrus-common</module>
       <module>authrus-log</module>      
       <module>authrus-slf4j</module>            
-      <module>authrus-io</module>      
-      <module>authrus-message</module> 
-      <module>authrus-message-serialize</module>        
-      <module>authrus-message-invoke</module>        
-      <module>authrus-transport</module>
-      <module>authrus-tuple</module>
+      <module>authrus-io</module>
       <module>authrus-system</module>       
       <module>authrus-chart</module>         
       <module>authrus-swing</module>    
       <module>authrus-spring</module>    
       <module>authrus-socket</module>      
-      <module>authrus-socket-spring</module>       
-      <module>authrus-tuple-spring</module>        
-		<module>authrus-tuple-test</module>           
+      <module>authrus-socket-spring</module>
 	</modules>
 
 </project>
